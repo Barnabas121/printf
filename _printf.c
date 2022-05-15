@@ -33,7 +33,6 @@ int (*find_function(const char *format))(va_list)
 	}
 	return (NULL);
 }
-
 /**
   * _printf - function that produces output according to a format.
   * @format: format (char, string, int, decimal)
@@ -78,43 +77,19 @@ int _printf(const char *format, ...)
 	return (cprint);
 }
 
-/**
-* print_unsig - function that prints unsigned number
-* @u: unsigned number
-* Descriptions: prints unsigned number with putchar
-* Return: size the output
-*/
-int print_unsig(va_list u)
+ */
+int print_string(va_list s)
 {
-	unsigned int len, powten, j, digit, n, num;
-	int count = 0;
+	char *my_string;
+	int  i = 0;
 
-	n = va_arg(u, unsigned int);
-	if (n != 0)
+	my_string = va_arg(s, char *);
+	if (my_string == NULL)
+		my_string = "(null)";
+	while (my_string[i])
 	{
-		num = n;
-		len = 0;
-		while (num != 0)
-		{
-			num /= 10;
-			len++;
-		}
-		powten = 1;
-		for (j = 1; j <= len - 1; j++)
-			powten *= 10;
-		for (j = 1; j <= len; j++)
-		{
-			digit = n / powten;
-			_putchar(digit + '0');
-			count++;
-			n -= digit * powten;
-			powten /= 10;
-		}
+		_putchar(my_string[i]);
+		i++;
 	}
-	else
-	{
-		_putchar('0');
-		return (1);
-	}
-	return (count);
+	return (i);
 }
