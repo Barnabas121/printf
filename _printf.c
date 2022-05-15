@@ -1,78 +1,50 @@
 #include "main.h"
 
 /**
- *get_format_func - function that selects the appropriate specifier
- *@s: *s const char pointer
- *
- *Description: function that selects the appropriate specifier
- *section header: Section description
- *Return: format
+ * _printf - prints formatted data to stdout
+ * @format: string that contains the format to print
+ * Return: number of characters written
  */
-
-int (*get_format_func(const char *s))(va_list)
+int _printf(char *format, ...)
 {
-unsigned int i;
-print_t print[] = {
-{"c", print_char},
-{"s", print_string},
-{"i", print_integer},
-{"d", print_integer},
-{NULL, NULL}
-};
+int written = 0, (*structype)(char *, va_list);
+char q[3];
+va_list pa;
 
-for (i = 0; print[i].prt != NULL; i++)
-{
-if (*(print[i]).prt == *s)
-{
-break;
-}
-}
-return (print[i].f);
-}
-
-
-/**
- *_printf -  function that prints anything.
- *@format: *format const pointer
- *
- *Description:  function that prints anything.
- *section header: Section description
- *Return: returns void
- */
-
-int _printf(const char *format, ...)
-{
-va_list argptr;
-int (*f)(va_list);
-unsigned int x = 0, count = 0;
 if (format == NULL)
 return (-1);
-va_start(argptr, format);
-while (format[x])
+q[2] = '\0';
+va_start(pa, format);
+_putchar(-1);
+while (format[0])
 {
-for (; format[x] != '%' && format[x]; x++)
+if (format[0] == '%')
 {
-_putchar(format[x]);
-count++;
+structype = driver(format);
+if (structype)
+{
+q[0] = '%';
+q[1] = format[1];
+written += structype(q, pa);
 }
-if (!format[x])
-return (count);
-f = get_format_func(&format[x + 1]);
-if (f != NULL)
+else if (format[1] != '\0')
 {
-count += f(argptr);
-x += 2;
-continue;
+written += _putchar('%');
+written += _putchar(format[1]);
 }
-if (!format[x + 1])
-return (-1);
-_putchar(format[x]);
-count++;
-if (format[x + 1] == '%')
-x += 2;
 else
-x++;
+{
+written += _putchar('%');
+break;
 }
-va_end(argptr);
-return (count);
+format += 2;
+}
+else
+{
+written += _putchar(format[0]);
+format++;
+}
+}
+_putchar(-2);
+return (written);
 }

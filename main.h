@@ -1,29 +1,36 @@
-#ifndef MAIN_H
-#define MAIN_H
-#include <stdlib.h>
-#include <stdio.h>
-#include <stddef.h>
+#ifndef _MAIN_H_
+#define _MAIN_H_
+
 #include <stdarg.h>
+#include <stddef.h>
+#include <stdlib.h>
 
 /**
- * struct print - c, s, i, d.
- * @prt: *ptr point
- * @f: pointer to va_list
+ * struct structprint - structure containing
+ * @q: the location and method to translate data to characters.
+ * @u: print function for specific type.
  *
- * Description: va_list struct
+ * Return: int
  */
-typedef struct print
+typedef struct structprint
 {
-char *prt;
-int (*f)(va_list);
-} print_t;
+char *q;
+int (*u)(char *format, va_list);
+} structype;
 
-int _putchar(char c);
-int print_char(va_list a);
-int print_string(va_list b);
-int print_integer(va_list v);
-
-int _printf(const char *format, ...);
-
-
-#endif /* MAIN_H */
+int _putchar(char ch);
+int _puts(char *string);
+int printc(char *format, va_list);
+int printstr(char *format, va_list);
+int (*driver(char *format))(char *format, va_list);
+int _printf(char *format, ...);
+int printint(char *format, va_list pa);
+int integer(int number);
+int contadordigit(int number);
+int _abs(int number);
+int printpercent(char *format, va_list pa);
+int printhex(char *format, va_list);
+int printHEX(char *format, va_list);
+int printocta(char *format, va_list);
+int print_unsign(char *format, va_list);
+#endif
