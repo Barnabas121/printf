@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
 * print_dec - function that prints an decimal
 * @d: integer to print

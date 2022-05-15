@@ -1,6 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
-#include "holberton.h"
+#include "main.h"
 /**
 *print_rev - prints astring in reverse
 *@r: string to print
