@@ -1,17 +1,16 @@
-#include "main.h"
+#include "holberton.h"
 
 /**
- *get_format_func - function that selects the appropriate specifier
+ *get_format_func - function that selects function
  *@s: *s const char pointer
  *
- *Description: function that selects the appropriate specifier
+ *Description: function that selects function
  *section header: Section description
- *Return: format
+ *Return: returns int
  */
 
 int (*get_format_func(const char *s))(va_list)
 {
-unsigned int i;
 print_t print[] = {
 {"c", print_char},
 {"s", print_string},
@@ -19,6 +18,8 @@ print_t print[] = {
 {"d", print_integer},
 {NULL, NULL}
 };
+
+unsigned int i;
 
 for (i = 0; print[i].prt != NULL; i++)
 {

@@ -1,0 +1,70 @@
+.TH man 3 "25 October 2020" "0.24" "_printf man page"
+.SH NAME
+.B _printf() 
+- Prints anything to stand output.
+.SH SYNOPSIS
+.B #include "holberton.h"
+.br
+\fBint _printf(const char *\fR\fIformat\fR\fB, ...);\fR
+.br
+\fBint _putchar(char c);\fR
+\fBint print_char(va_list a);\fR
+\fBint print_string(va_list b);\fR
+\fBint print_integer(va_list n);\fR
+.br
+.SH DESCRIPTION
+The function \fB_printf\fR writes output to standard output. An argument is
+received from \fIformat\fR that is a character string which outputs based on
+the arguments it receives after \fIformat\fR. All of the following arguments
+should address a conversion specifier, addressed with the prefix \fI%\fR.
+.br
+.SH OPTIONS
+.B _printf
+.br
+.SS
+.B Return Value
+The return value for \fB_printf()\fR is the length of the output recieved
+from \fI??\fR.
+.br
+.SS
+.B Conversion Specifiers
+These are indicated by the characters following the \fI%\fR which will indicate
+the kind of conversion that is taking place. Actions and descriptions follows:
+.br
+.B d, i
+Both d & i correspond to and \fIint\fR argument.
+.br
+.B s
+The \fIconst char *\fR specifier converts the argument to a character string.
+.br
+.B c
+This is an \fIint\fR specifier that converts argument(s) to an \fIunsigned
+char\fR to be printed alone.
+.br
+.SH EXAMPLES
+_printf("%d", integer_variable)
+.br
+_printf("%i", integer_variable)
+.br
+_printf("%c", character_variable)
+.br
+_printf("%s", string_variable)
+.br
+.SH CODE CONFORMS TO
+The
+.B Betty Standard
+.br
+.SH BUGS
+No known bugs.
+.br
+.SH SEE ALSO
+printf()
+.br
+write()
+.br
+puts()
+.br
+putchar()
+.SH AUTHORS
+\fBSang Nguyen\fR,
+\fBKyle Whitten\fR

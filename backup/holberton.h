@@ -1,5 +1,5 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef _PRINTF_FUNCTION
+#define _PRINTF_FUNCTION
 #include <stdlib.h>
 #include <stdio.h>
 #include <stddef.h>
@@ -26,4 +26,4 @@ int print_integer(va_list v);
 int _printf(const char *format, ...);
 
 
-#endif /* MAIN_H */
+#endif
