@@ -38,7 +38,7 @@ int printf_unsigned(va_list args)
 			i++;
 		}
 	}
-	_putchar(last + '0');
+	_putchar(last + '\0');
 
 	return (i);
 }
