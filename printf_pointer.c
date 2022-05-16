@@ -27,5 +27,5 @@ int printf_pointer(va_list val)
 	_putchar('0');
 	_putchar('x');
 	b = printf_hex_aux(a);
-	return (b + 2);'
+	return (b + 2);
 }
