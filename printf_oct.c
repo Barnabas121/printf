@@ -8,7 +8,7 @@
 int printf_oct(va_list val)
 {
 	int i;
-	int array;
+	int *array;
 	int counter = 0;
 	unsigned int num = va_arg(val, unsigned int);
 	unsigned int temp = num;
